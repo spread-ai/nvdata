@@ -23,6 +23,19 @@ Hint: Run all commands prefixed with colon ':' from within nvim
 ## Projecting like a boss with tmux
 - Brew install tmux
 - Make a project-like script that opens up a tmux session with the right windows and panes
+
+### Example ~/.tmux.conf
+```bash
+set -g mouse on
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'erikw/tmux-powerline'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+
+run '~/.tmux/plugins/tpm/tpm'
+```
+
+
 ### Example gql2service config
 
 ```bash
