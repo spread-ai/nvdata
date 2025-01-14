@@ -1,0 +1,58 @@
+# NvData config for data team
+- Forked from NvChad's Neovim config
+
+## Installation
+
+Hint: Run all commands prefixed with colon ':' from within nvim
+
+
+0. Brew install neovim
+1. Clone this repo to your `~/.config/nvim` directory
+2. Run `:MasonInstallAll` to install all plugins
+3. Install `ripgrep` for telescope to work properly - `cargo install ripgrep`
+4. Install rust-analyzer: `rustup component add rust-analyzer`
+5. Install typescript language server: `:MasonInstall typescript-language-server`
+
+## Usage-hints
+- Copilot auto-complete is on <C>-l
+- leader is Space
+- cheat sheet is leader+ch
+- Tree is <C>+n 
+
+
+## Projecting like a boss with tmux
+- Brew install tmux
+- Make a project-like script that opens up a tmux session with the right windows and panes
+### Example gql2service config
+
+```bash
+#!/bin/bash
+
+SESSION_NAME="gql2service"
+
+# Check if the session already exists
+tmux has-session -t $SESSION_NAME 2>/dev/null
+
+if [ $? != 0 ]; then
+    # Create a new session
+    tmux new-session -d -s $SESSION_NAME -n editor
+
+    # Window 1: Open nvim in gql2service folder
+    tmux send-keys -t $SESSION_NAME:0 "cd ~/path/to/gql2service && nvim" C-m
+
+    # Window 2: Run authmock
+    tmux new-window -t $SESSION_NAME -n authmock
+    tmux send-keys -t $SESSION_NAME:1 "cd ~/path/to/gql2service && ./authmock" C-m
+
+    # Window 3: Start Docker Redis
+    tmux new-window -t $SESSION_NAME -n redis
+    tmux send-keys -t $SESSION_NAME:2 "cd ~/path/to/gql2service && docker run --rm -d --name redis redis:latest" C-m
+
+    # Window 4: Start Docker Neo4j if not running
+    tmux new-window -t $SESSION_NAME -n neo4j
+    tmux send-keys -t $SESSION_NAME:3 "if ! docker ps | grep -q neo4j; then docker run --rm -d --name neo4j neo4j:latest; fi" C-m
+fi
+
+# Attach to the session
+tmux attach -t $SESSION_NAME
+```
