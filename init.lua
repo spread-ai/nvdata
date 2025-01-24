@@ -24,7 +24,14 @@ require("lazy").setup({
 
   { import = "plugins" },
 }, lazy_config)
-
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+  pattern = "*.rs",
+  callback = function()
+    if vim.lsp.buf.inlay_hint then
+      vim.lsp.buf.inlay_hint(0, true)
+    end
+  end,
+})
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
