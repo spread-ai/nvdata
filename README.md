@@ -43,8 +43,11 @@ normal = { family= "SauceCodePro Nerd Font Mono" }
 ## Projecting like a boss with tmux
 - Brew install tmux
 - Make a project-like script that opens up a tmux session with the right windows and panes
+- install TPM: `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
 ### Example ~/.tmux.conf
+- Installs TPM, sensible, powerline and tmux-resurrect
+- Mouse is on
 ```bash
 set -g mouse on
 set -g @plugin 'tmux-plugins/tpm'
