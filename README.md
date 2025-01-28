@@ -19,6 +19,26 @@ Hint: Run all commands prefixed with colon ':' from within nvim
 - cheat sheet is leader+ch
 - Tree is <C>+n 
 
+## Using alacritty and correct term fonts
+- Install alacritty
+  - `brew install alacritty`
+- Install nerd fonts
+  - https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/SourceCodePro.zip
+- Get alacritty themes:
+```bash
+mkdir -p ~/.config/alacritty/themes
+git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+```
+- Set alacritty font to a nerd fonts font:
+.config/alacritty/alacritty.toml
+```toml
+[general]
+import = ["~/.config/alacritty/themes/themes/tokyo-night.toml"]
+live_config_reload = true
+
+[font]
+normal = { family= "SauceCodePro Nerd Font Mono" }
+```
 
 ## Projecting like a boss with tmux
 - Brew install tmux
