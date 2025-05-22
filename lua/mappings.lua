@@ -17,4 +17,16 @@ end, {
   replace_keycodes = false,
 })
 
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
+map("n", "K", vim.diagnostic.open_float, { desc = "Show full diagnostic" })
+map("n", "<leader>dl", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+map("n", "<leader>q", function()
+  -- Schließt Location und Quickfix
+  vim.cmd("lclose")
+  vim.cmd("cclose")
+
+  -- Wenn aktuelles Fenster ein Terminal ist, dann schließe es
+  local buftype = vim.api.nvim_buf_get_option(0, "buftype")
+  if buftype == "terminal" then
+    vim.cmd("bd!") -- oder :q wenn du kein Buffer Kill willst
+  end
+end, { desc = "Close everything (quickfix, loclist, terminal)" })
