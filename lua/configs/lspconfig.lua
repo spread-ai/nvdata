@@ -3,7 +3,7 @@ require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
 
-local servers = { "html", "cssls", "pyright", "rust_analyzer", "ts_ls" }
+local servers = { "yamlls", "html", "cssls", "pyright", "rust_analyzer", "ts_ls" }
 local nvlsp = require "nvchad.configs.lspconfig"
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {

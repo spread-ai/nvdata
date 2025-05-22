@@ -1,11 +1,36 @@
+
 return {
+  -- Formatter
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
+    -- event = "BufWritePre", -- format-on-save
     opts = require "configs.conform",
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
+  -- Mason + Mason-LSP
+  {
+    "williamboman/mason.nvim",
+    lazy = false,
+    config = true,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+    lazy = false,
+    opts = {
+      ensure_installed = {
+        "rust_analyzer",
+        "lua_ls",
+        "yamlls",
+        "ts_ls",
+        "pyright",
+        "html",
+        "cssls",
+      },
+    },
+  },
+
+  -- LSPConfig
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -13,6 +38,7 @@ return {
     end,
   },
 
+  -- Crates
   {
     "saecki/crates.nvim",
     tag = "stable",
@@ -20,37 +46,42 @@ return {
       require("crates").setup()
     end,
   },
+
+  -- Copilot
   {
     "github/copilot.vim",
     lazy = false,
     config = function()
-      -- Mapping tab is already used by NvChad
-      vim.g.copilot_no_tab_map = true
+      vim.g.copilot_no_tab_map   = true
       vim.g.copilot_assume_mapped = true
-      vim.g.copilot_tab_fallback = ""
-      -- The mapping is set to other key, see custom/lua/mappings
-      -- or run <leader>ch to see copilot mapping section
+      vim.g.copilot_tab_fallback  = ""
     end,
   },
+
+  -- Treesitter  ✨  <<–– Hier war der Fehler
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
-      ensure_installed = {
+      ensure_installed = { -- <-- diese Ebene fehlte
         "vim",
         "lua",
         "vimdoc",
         "html",
         "css",
+        "yaml",
+        "rust",
+        "typescript",
+        "tsx",
       },
     },
   },
+
+  -- Neogit
   {
     "NeogitOrg/neogit",
     dependencies = {
-      "nvim-lua/plenary.nvim", -- required
-      "sindrets/diffview.nvim", -- optional - Diff integration
-
-      -- Only one of these is needed.
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
       "nvim-telescope/telescope.nvim", -- optional
     },
     config = true,
