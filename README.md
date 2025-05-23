@@ -15,6 +15,8 @@
 | **Treesitter**           | Grammar for `vim lua yaml rust typescript tsx html css`                                      |
 | **Package Manager**      | Mason + mason‑lspconfig → one command for all LSPs & tools                                   |
 | **QoL Tweaks**           | Inlay hints auto‑enabled, split nav `Ctrl‑h/j/k/l`, universal **Leader q** cleanup           |
+| **Markdown**             | Preview (`Leader m g`), Cheatsheet (`Leader c h`)                                            |
+
 
 ---
 
@@ -57,7 +59,7 @@ cargo install ripgrep
 | Copilot accept (insert)                  | `Ctrl‑l`            |
 | Cheatsheet popup                         | `Leader c h`        |
 | markdown preview                         | `Leader m g`        |
-| Git integration                          | :Neogit             |
+| Git integration                          | `Leader g g`              |
 
 *Enable format‑on‑save by uncommenting `event = "BufWritePre"` in `plugins/conform.lua`.*
 

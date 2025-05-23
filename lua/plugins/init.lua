@@ -15,7 +15,7 @@ return {
   {
     "ellisonleao/glow.nvim",
     cmd = "Glow",
-    config = true, -- nimmt defaults
+    config = true,
   },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -61,12 +61,11 @@ return {
       vim.g.copilot_tab_fallback = ""
     end,
   },
-
-  -- Treesitter  ✨  <<–– Hier war der Fehler
+  -- treesitter
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
-      ensure_installed = { -- <-- diese Ebene fehlte
+      ensure_installed = {
         "vim",
         "lua",
         "vimdoc",
@@ -86,7 +85,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",
-      "nvim-telescope/telescope.nvim", -- optional
+      "nvim-telescope/telescope.nvim",
     },
     config = true,
     lazy = false,

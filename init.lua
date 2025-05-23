@@ -36,23 +36,22 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
-
-vim.diagnostic.config({
+vim.diagnostic.config {
   virtual_text = {
     spacing = 4,
     severity_limit = "Warning", -- oder nil für alles
   },
   float = {
     border = "rounded",
-    source = true, -- zeigt Quelle wie rust-analyzer
+    source = true,
   },
   update_in_insert = false,
-})
+}
 
 vim.api.nvim_create_autocmd("CursorHold", {
   callback = function()
     vim.diagnostic.open_float(nil, { focusable = false })
-  end
+  end,
 })
 
 require "options"
@@ -61,4 +60,3 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
-

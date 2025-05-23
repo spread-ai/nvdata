@@ -31,4 +31,4 @@ map("n", "<leader>q", function()
   end
 end, { desc = "Close everything (quickfix, loclist, terminal)" })
 map("n", "<leader>mg", ":Glow<CR>", { desc = "Glow Preview" })
-
+map("n", "<leader>gg", ":Neogit<CR>", { desc = "Git" })
