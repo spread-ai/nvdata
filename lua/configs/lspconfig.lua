@@ -35,7 +35,8 @@ lspconfig["rust_analyzer"].setup {
         loadOutDirsFromCheck = true,
         allFeatures = true,
       },
-      checkOnSave = {
+      checkOnSave = true,
+      check = {
         command = "clippy",
       },
       procMacro = {
