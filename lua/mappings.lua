@@ -20,7 +20,7 @@ end, {
 map("n", "K", vim.diagnostic.open_float, { desc = "Show full diagnostic" })
 map("n", "<leader>dl", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
 map("n", "<leader>q", function()
-  -- Schließt Location und Quickfix
+ -- Schließt Location und Quickfix
   vim.cmd("lclose")
   vim.cmd("cclose")
 
@@ -30,3 +30,5 @@ map("n", "<leader>q", function()
     vim.cmd("bd!") -- oder :q wenn du kein Buffer Kill willst
   end
 end, { desc = "Close everything (quickfix, loclist, terminal)" })
+map("n", "<leader>mg", ":Glow<CR>", { desc = "Glow Preview" })
+
