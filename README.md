@@ -1,6 +1,7 @@
 # NvData — Opinionated Neovim for Data‑Centric Devs
 
 *A lightweight fork of [NvChad](https://github.com/NvChad/NvChad) tuned for Rust, TypeScript, YAML and day‑to‑day data engineering.*
+*Grab it from: [GitHub](https://github.com/spread-ai/nvdata)*
 
 ---
 
