@@ -60,7 +60,9 @@ cargo install ripgrep
 | Copilot accept (insert)                  | `Ctrl‑l`            |
 | Cheatsheet popup                         | `Leader c h`        |
 | markdown preview                         | `Leader m g`        |
-| Git integration                          | `Leader g g`              |
+| Git integration                          | `Leader g g`        |
+| go to references of symbol under cursor  | `g r`               |
+| go to definition of symbol under cursor  | `g d`               |
 
 *Enable format‑on‑save by uncommenting `event = "BufWritePre"` in `plugins/conform.lua`.*
 
