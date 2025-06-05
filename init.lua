@@ -54,6 +54,12 @@ vim.api.nvim_create_autocmd("CursorHold", {
   end,
 })
 
+vim.filetype.add({
+  extension = {
+    pest = "pest",
+  },
+})
+
 require "options"
 require "nvchad.autocmds"
 

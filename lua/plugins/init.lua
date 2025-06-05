@@ -18,6 +18,10 @@ return {
     config = true,
   },
   {
+    "pest-parser/pest.vim",
+    ft = "pest", -- load it only for .pest files
+  },
+  {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim" },
     lazy = false,
