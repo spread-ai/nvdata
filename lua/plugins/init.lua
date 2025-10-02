@@ -22,6 +22,30 @@ return {
     ft = "pest", -- load it only for .pest files
   },
   {
+    "nvimtools/none-ls.nvim",
+  },
+  {
+    "MunifTanjim/prettier.nvim",
+    lazy = false,
+    cmd = "Prettier",
+    config = function()
+      require("prettier").setup {
+        bin = "prettier", -- oder "prettierd" wenn du es global hast
+        filetypes = {
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+          "json",
+          "css",
+          "scss",
+          "html",
+          "markdown",
+        },
+      }
+    end,
+  },
+  {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim" },
     lazy = false,
