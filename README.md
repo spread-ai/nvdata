@@ -63,6 +63,8 @@ cargo install ripgrep
 | Git integration                          | `Leader g g`        |
 | go to references of symbol under cursor  | `g r`               |
 | go to definition of symbol under cursor  | `g d`               |
+| format everything using current language | `Leader f m`        |
+| format file with prettier only           | `Leader f p`        |
 
 *Enable format‑on‑save by uncommenting `event = "BufWritePre"` in `plugins/conform.lua`.*
 
