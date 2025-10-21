@@ -20,7 +20,7 @@ local function on_attach_with_inlay(client, bufnr)
 end
 
 -- Generic servers
-for _, name in ipairs { "yamlls", "html", "cssls", "pyright", "ts_ls" } do
+for _, name in ipairs { "yamlls", "html", "cssls", "pyright", "ts_ls", "ruff" } do
   vim.lsp.config(name, {
     on_attach = nvlsp.on_attach,
     on_init = nvlsp.on_init,
@@ -99,3 +99,30 @@ require("crates").setup {
     },
   },
 }
+
+-- pyright (Poetry-aware)
+vim.lsp.config("pyright", {
+  on_attach = on_attach_with_inlay,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  cmd = { "pyright-langserver", "--stdio" },
+  root_dir = vim.fs.root(0, { "pyproject.toml", "setup.py", ".git" }),
+  before_init = function(_, config)
+    -- Ask Poetry for the active virtual environment
+    local venv = vim.fn.trim(vim.fn.system "poetry env info --path")
+    if vim.fn.isdirectory(venv) == 1 then
+      config.settings = config.settings or {}
+      config.settings.python = config.settings.python or {}
+      config.settings.python.pythonPath = venv .. "/bin/python"
+    end
+  end,
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = "workspace",
+      },
+    },
+  },
+})

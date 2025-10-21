@@ -58,6 +58,7 @@ return {
         "pyright",
         "html",
         "cssls",
+        "ruff",
       },
     },
   },
