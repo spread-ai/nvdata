@@ -81,14 +81,29 @@ return {
   },
 
   -- Copilot
+  -- {
+  --   "github/copilot.vim",
+  --   lazy = false,
+  --   config = function()
+  --     vim.g.copilot_no_tab_map = true
+  --     vim.g.copilot_assume_mapped = true
+  --     vim.g.copilot_tab_fallback = ""
+  --   end,
+  -- },
+  -- supermaven
   {
-    "github/copilot.vim",
-    lazy = false,
+    "supermaven-inc/supermaven-nvim",
     config = function()
-      vim.g.copilot_no_tab_map = true
-      vim.g.copilot_assume_mapped = true
-      vim.g.copilot_tab_fallback = ""
+      require("supermaven-nvim").setup {
+        keymaps = {
+          accept_suggestion = "<C-l>", -- Accept suggestion
+          clear_suggestion = "<C-]>", -- Clear suggestion (optional)
+          accept_word = "<C-j>", -- Accept one word (optional)
+        },
+        disable_keymaps = false, -- keep keymaps enabled so the above works
+      }
     end,
+    lazy = false,
   },
   -- treesitter
   {
