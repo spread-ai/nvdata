@@ -94,14 +94,14 @@ return {
   {
     "supermaven-inc/supermaven-nvim",
     config = function()
-      require("supermaven-nvim").setup {
+      require("supermaven-nvim").setup ({
         keymaps = {
-          accept_suggestion = "<C-l>", -- Accept suggestion
+          accept_suggestion = "<C-y>", -- Accept suggestion
           clear_suggestion = "<C-]>", -- Clear suggestion (optional)
           accept_word = "<C-j>", -- Accept one word (optional)
         },
         disable_keymaps = false, -- keep keymaps enabled so the above works
-      }
+      })
     end,
     lazy = false,
   },
